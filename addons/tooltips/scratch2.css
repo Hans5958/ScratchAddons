@@ -1,5 +1,5 @@
 .sa-tooltips-wrapper {
-  margin: .25em;
+  margin: 0.25em;
 }
 
 .sa-tooltips-studio-title {
@@ -36,7 +36,7 @@
 }
 
 .sa-tooltips-wrapper {
-  margin: .25em;
+  margin: 0.25em;
 }
 
 .sa-tooltips-project-title,
@@ -70,20 +70,20 @@
 }
 
 .tippy-box[data-theme^="sa-tooltips"] .tippy-content {
-  font-size: .923em;
+  font-size: 0.923em;
   line-height: 1.2em;
 }
 
 .sa-tooltips-wrapper .sa-tooltips-title,
 .sa-tooltips-user-name {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .sa-tooltips-project-author,
 .sa-tooltips-topic-category,
 .sa-tooltips-post-count {
   color: #aaa;
-  font-size: .8462em;
+  font-size: 0.8462em;
 }
 
 .tippy-box[data-theme="sa-tooltips-light"] .sa-tooltips-project-author,
@@ -118,16 +118,16 @@
 }
 
 .sa-tooltips-post-author {
-  padding-top: .5em;
+  padding-top: 0.5em;
   border-top: 1px solid #8888;
   font-weight: bold;
 }
 
 .sa-tooltips-forum-topic .sa-tooltips-info-wrapper > *,
 .sa-tooltips-forum-post .sa-tooltips-info-wrapper > * {
-  margin: .5em 0;
+  margin: 0.5em 0;
 }
 
 .sa-tooltips-project-author-img {
-  display: none
+  display: none;
 }
