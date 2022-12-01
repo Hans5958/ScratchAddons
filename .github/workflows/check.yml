@@ -1,0 +1,38 @@
+name: Check code
+on: [push, pull_request]
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    permissions: read-all
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install --global eslint prettier
+
+      - name: Find changed files
+        if: github.event_name == 'push' || github.event_name == 'pull_request'
+        id: changed
+        uses: ScratchAddons/changed-files@master
+        with:
+          repo-token: ${{ github.token }}
+
+      - name: Set files to check
+        id: to-check
+        run: |
+          FILES=$(echo "${{ steps.changed.outputs.files_created }}
+                        ${{ steps.changed.outputs.files_updated }}" | sed "s/^\s*//g;s/\s*$//g;s/^\s*/\"/;s/\s*$/\"/" | tr '\n' ' ' | sed "s/\"\"//g")
+          echo $FILES
+          echo "FILES=$FILES" >> $GITHUB_OUTPUT
+
+      - name: Check using ESLint
+        run: npx eslint --config .eslintrc.json --ext .js ${{ steps.to-check.outputs.files }}
+        continue-on-error: true
+
+      - name: Check using Prettier
+        run: npx prettier --check ${{ steps.to-check.outputs.files }}
+        continue-on-error: true
